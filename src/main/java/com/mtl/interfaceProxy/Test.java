@@ -1,6 +1,7 @@
 package com.mtl.interfaceProxy;
 
 import com.mtl.itf.Service;
+import com.mtl.itf.UserService;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -13,7 +14,9 @@ public class Test {
     public static void main(String[] args){
         ClassPathXmlApplicationContext applicationContext=new ClassPathXmlApplicationContext("app*.xml");
         Service service = applicationContext.getBean(Service.class);
+        UserService UserService = applicationContext.getBean(UserService.class);
         service.test("123");
+        UserService.save("user");
         applicationContext.close();
     }
 }
